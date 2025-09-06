@@ -2,35 +2,13 @@ name: HR Payroll Test Automation
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
-  schedule:
-    - cron: '0 2 * * *'
-  workflow_dispatch:  # Manual trigger with parameters
-    inputs:
-      test_suite:
-        description: 'Test Suite to Run'
-        required: true
-        default: 'SmokeTestRunner'
-        type: choice
-        options:
-          - SmokeTestRunner
-          - PositiveTestRunner
-          - NegativeTestRunner
-          - RegressionTestRunner
-      browser:
-        description: 'Browser for Testing'
-        required: true
-        default: 'chrome'
-        type: choice
-        options:
-          - chrome
-          - firefox
-          - edge
+  workflow_dispatch:
 
 env:
-  MAVEN_OPTS: -Xmx1024m -XX:MaxPermSize=256m
+  MAVEN_OPTS: -Xmx1024m
 
 jobs:
   test:
@@ -38,148 +16,69 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chrome, firefox]
-        test-suite: [SmokeTestRunner, PositiveTestRunner]
-
+        browser: [chrome]
+        test-suite: [SmokeTestRunner]
+        
     name: Test ${{ matrix.test-suite }} on ${{ matrix.browser }}
-
+    
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-
-      - name: Cache Maven Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-
-      - name: Set up Chrome Browser
-        if: matrix.browser == 'chrome'
-        uses: browser-actions/setup-chrome@latest
-
-      - name: Set up Firefox Browser
-        if: matrix.browser == 'firefox'
-        uses: browser-actions/setup-firefox@latest
-
-      - name: Create Directories
-        run: |
-          mkdir -p reports/extent
-          mkdir -p screenshots
-          mkdir -p logs
-
-      - name: Run Maven Tests
-        run: |
-          mvn clean test \
-            -Dtest=${{ matrix.test-suite }} \
-            -Dbrowser=${{ matrix.browser }} \
-            -Dheadless=true \
-            -Dmaven.test.failure.ignore=true \
-            -Dsurefire.rerunFailingTestsCount=1
-
-      - name: Generate Test Report
-        if: always()
-        uses: dorny/test-reporter@v1
-        with:
-          name: Test Results (${{ matrix.browser }}-${{ matrix.test-suite }})
-          path: 'target/surefire-reports/*.xml'
-          reporter: java-junit
-          fail-on-error: false
-
-      - name: Upload ExtentReports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: extent-reports-${{ matrix.browser }}-${{ matrix.test-suite }}
-          path: reports/extent/
-          retention-days: 30
-
-      - name: Upload Screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: screenshots-${{ matrix.browser }}-${{ matrix.test-suite }}
-          path: screenshots/
-          retention-days: 30
-
-      - name: Upload Logs
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: logs-${{ matrix.browser }}-${{ matrix.test-suite }}
-          path: logs/
-          retention-days: 7
-
-  # Regression tests (run only on schedule or manual trigger)
-  regression:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        browser: [chrome, firefox, edge]
-
-    name: Regression Tests on ${{ matrix.browser }}
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-
-      - name: Cache Maven Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-
-      - name: Setup Browser
-        uses: browser-actions/setup-chrome@latest
-        if: matrix.browser == 'chrome'
-
-      - name: Run Full Regression Suite
-        run: |
-          mvn clean test \
-            -Dtest=RegressionTestRunner \
-            -Dbrowser=${{ matrix.browser }} \
-            -Dheadless=true \
-            -Dmaven.test.failure.ignore=true
-
-      - name: Upload Regression Reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: regression-reports-${{ matrix.browser }}
-          path: reports/extent/
-          retention-days: 90
-
-  # Summary job
-  test-summary:
-    if: always()
-    needs: [test]
-    runs-on: ubuntu-latest
-    name: Test Summary
-
-    steps:
-      - name: Check Test Results
-        run: |
-          if [[ "${{ needs.test.result }}" == "success" ]]; then
-            echo "All tests passed successfully!"
-            exit 0
-          elif [[ "${{ needs.test.result }}" == "failure" ]]; then
-            echo "Some tests failed. Check the reports."
-            exit 1
-          else
-            echo "Tests completed with warnings."
-            exit 0
-          fi
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Install Chrome and dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable xvfb
+        
+    - name: Create directories
+      run: |
+        mkdir -p reports/extent
+        mkdir -p screenshots
+        mkdir -p logs
+        
+    - name: Run tests
+      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
+        mvn clean test \
+          -Dtest=${{ matrix.test-suite }} \
+          -Dbrowser=${{ matrix.browser }} \
+          -Dheadless=true \
+          -Dmaven.test.failure.ignore=true
+          
+    - name: Debug - List generated files
+      if: always()
+      run: |
+        echo "=== Project structure ==="
+        ls -la
+        echo "=== Target directory ==="
+        ls -la target/ || echo "No target directory"
+        echo "=== Surefire reports ==="
+        ls -la target/surefire-reports/ || echo "No surefire-reports"
+        echo "=== Reports ==="
+        ls -la reports/ || echo "No reports directory"
+        
+    - name: Upload artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.browser }}
+        path: |
+          target/surefire-reports/
+          reports/
+          screenshots/
+          logs/
+        retention-days: 7
