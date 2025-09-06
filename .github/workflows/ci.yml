@@ -44,8 +44,15 @@ jobs:
         
     - name: Create directories
       run: |
-        mkdir -p reports/extent reports/cucumber-html-report screenshots logs
-        
+        rm -rf reports screenshots logs  # Clean any existing directories
+        mkdir -p reports/extent
+        mkdir -p reports/cucumber-html-report  
+        mkdir -p screenshots
+        mkdir -p logs
+        echo "Directories created successfully"
+        ls -la
+    
+
     - name: Compile project
       run: |
         mvn clean compile test-compile
