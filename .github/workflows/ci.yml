@@ -10,80 +10,57 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    
-    strategy:
-      fail-fast: false
-      matrix:
-        test-suite: [SmokeTestRunner]
-        
-    name: Test ${{ matrix.test-suite }}
-    
+    timeout-minutes: 20
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Cache Maven dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
-        
-    - name: Install Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-        google-chrome --version
-        
-    - name: Create directories
-      run: |
-        rm -rf reports screenshots logs  # Clean any existing directories
-        mkdir -p reports/extent
-        mkdir -p reports/cucumber-html-report  
-        mkdir -p screenshots
-        mkdir -p logs
-        echo "Directories created successfully"
-        ls -la
-    
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
 
-    - name: Compile project
-      run: |
-        mvn clean compile test-compile
-        
-    - name: List test classes
-      run: |
-        find target/test-classes -name "*Runner.class" -o -name "*Test.class"
-        
-    - name: Run tests (Cucumber approach)
-      run: |
-        mvn clean test \
-          -Dtest=${{ matrix.test-suite }} \
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Create directories
+        run: |
+          mkdir -p reports/extent
+          mkdir -p reports/html
+          mkdir -p reports/json
+          mkdir -p screenshots
+          mkdir -p logs
+
+      - name: Run tests with clean Maven settings
+        env:
+          MAVEN_OPTS: "-Dmaven.repo.local=$HOME/.m2/repository"
+        run: |
+          mvn --batch-mode --update-snapshots \
+          clean test \
+          -Dtest=SmokeTestRunner \
           -Dbrowser=chrome \
           -Dheadless=true \
           -Dmaven.test.failure.ignore=true \
-          -X
-          
-    - name: List generated files
-      if: always()
-      run: |
-        echo "=== Generated files ==="
-        find . -name "*.xml" -o -name "*.html" -o -name "*.json" | grep -E "(surefire|extent|cucumber)"
-        
-    - name: Upload all artifacts
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results-${{ matrix.test-suite }}
-        path: |
-          target/
-          reports/
-          screenshots/
-          logs/
-        retention-days: 7
+          -Dsettings.security=/dev/null
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            target/surefire-reports/
+            reports/
+            screenshots/
+          retention-days: 7

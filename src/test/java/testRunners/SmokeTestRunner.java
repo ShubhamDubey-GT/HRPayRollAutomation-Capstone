@@ -10,10 +10,10 @@ import org.testng.annotations.DataProvider;
         tags = "@Smoke",
         plugin = {
                 "pretty",
-                "html:reports/cucumber-html-report",
-                "json:reports/cucumber-json-report.json",
+                "html:reports/cucumber-html",
+                "json:reports/cucumber-json/report.json",
                 "junit:reports/cucumber-junit-report.xml",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+                "tech.grasshopper.extent.ExtentCucumberAdapter:"
         },
         monochrome = true,
         dryRun = false
