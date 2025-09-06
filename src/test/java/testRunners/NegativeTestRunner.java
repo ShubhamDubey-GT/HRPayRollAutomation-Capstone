@@ -9,9 +9,9 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@Negative",
         plugin = {
                 "pretty",
-                "html:reports/html",
-                "json:reports/json/cucumber-report.json",
-                "tech.grasshopper.extent.ExtentCucumberAdapter:"
+                "html:reports/cucumber-html",
+                "json:reports/cucumber-json/report.json",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         monochrome = true
 )

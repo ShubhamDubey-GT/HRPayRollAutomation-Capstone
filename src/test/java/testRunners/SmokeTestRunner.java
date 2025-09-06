@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
                 "html:reports/cucumber-html",
                 "json:reports/cucumber-json/report.json",
                 "junit:reports/cucumber-junit-report.xml",
-                "tech.grasshopper.extent.ExtentCucumberAdapter:"
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         monochrome = true,
         dryRun = false
