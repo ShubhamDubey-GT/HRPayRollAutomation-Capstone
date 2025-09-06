@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utilities.ElementUtils;
+import utilities.PropertyReader;
 import utilities.WaitUtils;
 
 public class PIMPage extends BasePage {
@@ -61,7 +62,7 @@ public class PIMPage extends BasePage {
 
     public boolean isSuccessMessageDisplayed() {
         try {
-            WaitUtils.waitForElementVisible(driver, SUCCESS_MESSAGE);
+            WaitUtils.waitForElementVisible(driver, SUCCESS_MESSAGE, PropertyReader.getToastTimeout());
             System.out.println("Success message displayed");
             return true;
         } catch (Exception e) {
