@@ -10,20 +10,33 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
-                echo "Code checked out"
+                echo "✅ Code checked out"
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'
-                echo "Build completed"
+                script {
+                    if (isUnix()) {
+                        sh 'mvn clean install -DskipTests'
+                    } else {
+                        bat 'mvn clean install -DskipTests'
+                    }
+                }
+                echo "✅ Build completed"
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh "mvn test -Dtest=${params.TEST_SUITE}TestRunner -Dbrowser=${params.BROWSER}"
+                script {
+                    def testCmd = "mvn test -Dtest=${params.TEST_SUITE}TestRunner -Dbrowser=${params.BROWSER}"
+                    if (isUnix()) {
+                        sh testCmd
+                    } else {
+                        bat testCmd
+                    }
+                }
             }
             post {
                 always {
@@ -42,9 +55,11 @@ pipeline {
 
     post {
         always {
+            echo "📦 Archiving reports and logs..."
             archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'reports/**/*', allowEmptyArchive: true
             archiveArtifacts artifacts: 'screenshots/**/*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'logs/**/*', allowEmptyArchive: true
         }
     }
 }
