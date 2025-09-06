@@ -15,7 +15,6 @@ public class PropertyReader {
     private static void loadProperties() {
         try (FileInputStream fis = new FileInputStream(CONFIG_PATH)) {
             properties.load(fis);
-            System.out.println("Configuration loaded successfully from: " + CONFIG_PATH);
         } catch (IOException e) {
             System.out.println("Config file not found, using defaults");
             setDefaultProperties();
@@ -25,8 +24,6 @@ public class PropertyReader {
     private static void setDefaultProperties() {
         properties.setProperty("app.url", "https://opensource-demo.orangehrmlive.com");
         properties.setProperty("browser", "chrome");
-        properties.setProperty("username", "Admin");
-        properties.setProperty("password", "admin123");
         properties.setProperty("timeout", "30");
         properties.setProperty("useGrid", "false");
         properties.setProperty("selenium.grid.url", "http://localhost:4444/wd/hub");
@@ -69,6 +66,10 @@ public class PropertyReader {
 
     public static int getTimeout() {
         return Integer.parseInt(getProperty("timeout", "30"));
+    }
+
+    public static int getToastTimeout() {
+        return Integer.parseInt(getProperty("toast.timeout", "5"));
     }
 
     public static boolean useGrid() {

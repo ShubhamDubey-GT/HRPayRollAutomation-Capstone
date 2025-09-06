@@ -8,38 +8,34 @@ import org.openqa.selenium.TakesScreenshot;
 import utilities.DriverFactory;
 import utilities.PropertyReader;
 import utilities.ScreenshotUtils;
+import utilities.ExcelUtils;
 
 public class TestHooks {
 
     @Before
     public void setUp(Scenario scenario) {
-        System.out.println("Starting scenario: " + scenario.getName());
-        String browser = System.getProperty("browser", PropertyReader.getBrowser());
+        String browser = PropertyReader.getBrowser();
         DriverFactory.initializeDriver(browser);
 
-        // Navigate to application URL
         String url = PropertyReader.getAppUrl();
         DriverFactory.getDriver().get(url);
-        System.out.println("🌐 Navigated to: " + url);
     }
-
 
     @After
     public void tearDown(Scenario scenario) {
         if (DriverFactory.isDriverInitialized()) {
             try {
-                String safeName = scenario.getName().replaceAll("[^a-zA-Z0-9-_]", "_");
-                byte[] bytes = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
+                String scenarioName = scenario.getName().replaceAll("[^a-zA-Z0-9-_]", "_");
+                byte[] screenshotBytes = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
 
                 if (scenario.isFailed()) {
-                    ScreenshotUtils.captureScreenshotOnFailure(DriverFactory.getDriver(), safeName);
-                    scenario.attach(bytes, "image/png", safeName + "_FAIL");
-                    System.out.println("Scenario failed: " + scenario.getName());
+                    ScreenshotUtils.captureScreenshotOnFailure(DriverFactory.getDriver(), scenarioName);
+                    scenario.attach(screenshotBytes, "image/png", scenarioName + "_FAIL");
                 } else {
-                    ScreenshotUtils.captureScreenshotOnPass(DriverFactory.getDriver(), safeName);
-                    scenario.attach(bytes, "image/png", safeName + "_PASS");
-                    System.out.println("Scenario passed: " + scenario.getName());
+                    ScreenshotUtils.captureScreenshotOnPass(DriverFactory.getDriver(), scenarioName);
+                    scenario.attach(screenshotBytes, "image/png", scenarioName + "_PASS");
                 }
+
             } catch (Exception e) {
                 System.out.println("Screenshot capture failed: " + e.getMessage());
             } finally {
@@ -48,4 +44,12 @@ public class TestHooks {
         }
     }
 
+    @After(order = 1000)
+    public void cleanupResources(Scenario scenario) {
+        try {
+            ExcelUtils.closeWorkbooks();
+        } catch (Exception e) {
+            System.out.println("Error closing Excel workbooks: " + e.getMessage());
+        }
+    }
 }

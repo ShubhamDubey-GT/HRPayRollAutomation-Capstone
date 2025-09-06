@@ -46,9 +46,13 @@ public class DriverFactory {
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-notifications");
                 chromeOptions.addArguments("--disable-popup-blocking");
-                chromeOptions.addArguments("--headless=new");
+
                 if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
                     chromeOptions.addArguments("--headless");
+                }
+
+                if (Boolean.parseBoolean(System.getProperty("maximize", "false"))) {
+                    chromeOptions.addArguments("--start-maximized");
                 }
                 return new ChromeDriver(chromeOptions);
 
