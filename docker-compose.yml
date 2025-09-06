@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   selenium-hub:
     image: selenium/hub:4.15.0
