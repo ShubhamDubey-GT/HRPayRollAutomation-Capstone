@@ -7,19 +7,17 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-env:
-  MAVEN_OPTS: -Xmx1024m
-
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
     strategy:
       fail-fast: false
       matrix:
-        browser: [chrome]
         test-suite: [SmokeTestRunner]
         
-    name: Test ${{ matrix.test-suite }} on ${{ matrix.browser }}
+    name: Test ${{ matrix.test-suite }}
     
     steps:
     - name: Checkout code
@@ -38,46 +36,46 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
         
-    - name: Install Chrome and dependencies
+    - name: Install Chrome
       run: |
         sudo apt-get update
-        sudo apt-get install -y google-chrome-stable xvfb
+        sudo apt-get install -y google-chrome-stable
+        google-chrome --version
         
     - name: Create directories
       run: |
-        mkdir -p reports/extent
-        mkdir -p screenshots
-        mkdir -p logs
+        mkdir -p reports/extent reports/cucumber-html-report screenshots logs
         
-    - name: Run tests
+    - name: Compile project
       run: |
-        export DISPLAY=:99
-        Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
+        mvn clean compile test-compile
+        
+    - name: List test classes
+      run: |
+        find target/test-classes -name "*Runner.class" -o -name "*Test.class"
+        
+    - name: Run tests (Cucumber approach)
+      run: |
         mvn clean test \
           -Dtest=${{ matrix.test-suite }} \
-          -Dbrowser=${{ matrix.browser }} \
+          -Dbrowser=chrome \
           -Dheadless=true \
-          -Dmaven.test.failure.ignore=true
+          -Dmaven.test.failure.ignore=true \
+          -X
           
-    - name: Debug - List generated files
+    - name: List generated files
       if: always()
       run: |
-        echo "=== Project structure ==="
-        ls -la
-        echo "=== Target directory ==="
-        ls -la target/ || echo "No target directory"
-        echo "=== Surefire reports ==="
-        ls -la target/surefire-reports/ || echo "No surefire-reports"
-        echo "=== Reports ==="
-        ls -la reports/ || echo "No reports directory"
+        echo "=== Generated files ==="
+        find . -name "*.xml" -o -name "*.html" -o -name "*.json" | grep -E "(surefire|extent|cucumber)"
         
-    - name: Upload artifacts
+    - name: Upload all artifacts
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: test-results-${{ matrix.browser }}
+        name: test-results-${{ matrix.test-suite }}
         path: |
-          target/surefire-reports/
+          target/
           reports/
           screenshots/
           logs/
