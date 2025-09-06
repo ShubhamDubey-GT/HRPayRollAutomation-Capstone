@@ -42,23 +42,20 @@ jobs:
           mkdir -p screenshots
           mkdir -p logs
 
-      - name: Run tests with clean Maven settings
+      - name: Run tests
         env:
           MAVEN_OPTS: "-Dmaven.repo.local=$HOME/.m2/repository"
         run: |
-          mvn --batch-mode --update-snapshots \
-          clean test \
-          -Dtest=SmokeTestRunner \
-          -Dbrowser=chrome \
-          -Dheadless=true \
-          -Dmaven.test.failure.ignore=true \
-          -Dsettings.security=/dev/null
+          mvn --batch-mode --update-snapshots clean test \
+            -Dbrowser=chrome \
+            -Dheadless=true \
+            -Dmaven.test.failure.ignore=true
 
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
+          name: cucumber-test-reports
           path: |
             target/surefire-reports/
             reports/
