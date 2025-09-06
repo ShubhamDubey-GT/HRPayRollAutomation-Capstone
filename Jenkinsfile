@@ -27,30 +27,39 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                script {
-                    def testCmd = "mvn test -Dtest=${params.TEST_SUITE}TestRunner -Dbrowser=${params.BROWSER}"
-                    if (isUnix()) {
-                        sh testCmd
-                    } else {
-                        bat testCmd
-                    }
-                }
-            }
-            post {
-                always {
-                    publishHTML([
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: true,
-                        keepAll: true,
-                        reportDir: 'reports',
-                        reportFiles: '*.html',
-                        reportName: 'Test Results'
-                    ])
-                }
+stage('Run Tests') {
+    steps {
+        script {
+            def testCmd = "mvn test -Dtest=${params.TEST_SUITE}TestRunner -Dbrowser=${params.BROWSER}"
+            if (isUnix()) {
+                sh testCmd
+            } else {
+                bat testCmd
             }
         }
+    }
+    post {
+        always {
+            publishHTML([
+                allowMissing: true,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'target/surefire-reports',
+                reportFiles: '*.html',
+                reportName: 'Surefire Test Results'
+            ]),
+                publishHTML([
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'reports/extent',
+                    reportFiles: 'index.html',
+                    reportName: 'Extent Report'
+                ])
+        }
+    }
+}
+
     }
 
     post {
