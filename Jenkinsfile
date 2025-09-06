@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Browser for test execution')
-        choice(name: 'TEST_SUITE', choices: ['smoke', 'positive', 'negative', 'regression'], description: 'Test suite to execute')
+        choice(name: 'TEST_SUITE', choices: ['Smoke', 'Positive', 'Negative', 'Regression'], description: 'Test suite to execute')
     }
 
     stages {
