@@ -97,6 +97,9 @@ password=admin123
     ``` bash
     mvn test -Dheadless=true
     ```
+## Test Status
+
+![CI](https://github.com/your-username/hr-payroll-automation/workflows/CI/badge.svg)
 
 ## Reports
 
