@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- Report theme - standard, dark -->
+        <theme>standard</theme>
+        
+        <!-- Report name, document title -->
+        <documentTitle>HR Payroll System - Test Automation Report</documentTitle>
+        <reportName>HR Payroll Automation Test Results</reportName>
+        
+        <!-- Date format -->
+        <dateFormat>MMM dd, yyyy HH:mm:ss</dateFormat>
+        
+        <!-- Timestamp format -->
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+        
+        <!-- Encoding -->
+        <encoding>UTF-8</encoding>
+        
+        <!-- Protocol for report -->
+        <protocol>https</protocol>
+        
+        <!-- JavaScript and CSS -->
+        <js><![CDATA[
+            $(document).ready(function() {
+                // Custom JavaScript for enhanced reporting
+                console.log('HR Payroll Test Report Loaded');
+            });
+        ]]></js>
+        
+        <css><![CDATA[
+            /* Custom CSS for branding */
+            .brand-logo {
+                background-color: #1f4e79;
+                color: white;
+                padding: 10px;
+            }
+            
+            .test-step {
+                font-family: 'Courier New', monospace;
+            }
+            
+            /* Custom colors for test status */
+            .status-pass {
+                background-color: #28a745 !important;
+            }
+            
+            .status-fail {
+                background-color: #dc3545 !important;
+            }
+            
+            .status-skip {
+                background-color: #ffc107 !important;
+            }
+            
+            /* Header customization */
+            .navbar-brand {
+                font-weight: bold;
+                color: #1f4e79 !important;
+            }
+            
+            /* Feature and scenario styling */
+            .feature-heading {
+                border-left: 4px solid #007bff;
+                padding-left: 10px;
+                margin-bottom: 15px;
+            }
+            
+            .scenario-heading {
+                border-left: 3px solid #28a745;
+                padding-left: 8px;
+                margin-bottom: 10px;
+            }
+            
+            /* Step details styling */
+            .step-details {
+                font-size: 13px;
+                line-height: 1.4;
+                margin: 5px 0;
+            }
+            
+            /* Screenshot styling */
+            .screenshot-container {
+                border: 2px solid #dee2e6;
+                border-radius: 5px;
+                padding: 5px;
+                margin: 10px 0;
+                text-align: center;
+            }
+            
+            /* Environment info styling */
+            .environment-widget {
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 5px;
+                padding: 15px;
+                margin: 10px 0;
+            }
+            
+            /* Test data table styling */
+            .test-data-table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .test-data-table th,
+            .test-data-table td {
+                border: 1px solid #dee2e6;
+                padding: 8px;
+                text-align: left;
+            }
+            
+            .test-data-table th {
+                background-color: #e9ecef;
+                font-weight: bold;
+            }
+            
+            /* Tags styling */
+            .tag {
+                background-color: #007bff;
+                color: white;
+                padding: 2px 8px;
+                border-radius: 12px;
+                font-size: 11px;
+                margin: 2px;
+                display: inline-block;
+            }
+            
+            .tag.smoke {
+                background-color: #28a745;
+            }
+            
+            .tag.negative {
+                background-color: #dc3545;
+            }
+            
+            .tag.positive {
+                background-color: #007bff;
+            }
+        ]]></css>
+    </configuration>
+</extentreports>

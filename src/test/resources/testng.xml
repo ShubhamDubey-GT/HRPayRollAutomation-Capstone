@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="HR Payroll System Test Suite - Complete Fixed" parallel="none" thread-count="1">
+    <parameter name="browser" value="chrome"/>
+
+    <test name="Smoke Tests" preserve-order="true">
+        <classes>
+            <class name="testRunners.SmokeTestRunner"/>
+        </classes>
+    </test>
+
+</suite>
