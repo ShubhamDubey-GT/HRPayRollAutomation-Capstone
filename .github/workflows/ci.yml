@@ -1,0 +1,47 @@
+name: HR Payroll System Test Automation
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        browser: [chrome]
+        test-suite: [smoke, positive]
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    - name: Cache Maven Dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+
+    - name: Install Dependencies
+      run: mvn clean install -DskipTests
+
+    - name: Run Tests
+      run: mvn test -Dtest=${{ matrix.test-suite }}TestRunner -Dbrowser=${{ matrix.browser }}
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results-${{ matrix.browser }}-${{ matrix.test-suite }}
+        path: |
+          target/surefire-reports/
+          reports/
+          screenshots/
