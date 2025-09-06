@@ -1,0 +1,84 @@
+2025-09-06 18:46:13.194 [main] WARN  org.testng.xml.TestNGContentHandler - It is strongly recommended to add "<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >" at the top of the suite file [E:\Assignments\Capstone Project\HRPayRollAutomation-Capstone\src\test\resources\testng.xml] otherwise TestNG may fail or not work as expected.
+2025-09-06 18:46:13.566 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  E:\Assignments\Capstone Project\HRPayRollAutomation-Capstone\src\test\resources\testng.xml
+
+2025-09-06 18:46:15.791 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:46:15.850 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:46:29.846 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:46:29.886 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:46:48.294 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:46:48.333 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:47:32.141 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:47:32.174 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:48:51.948 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:48:51.963 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:50:08.757 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:50:08.789 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:51:28.667 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:51:28.682 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:52:04.389 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:52:04.423 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 18:52:41.719 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 18:52:41.744 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:02:15.212 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:02:15.266 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:02:39.690 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:02:39.713 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:03:02.597 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:03:02.621 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:03:13.801 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:03:13.813 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:03:56.112 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:03:56.129 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:04:50.951 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:04:50.973 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:05:46.118 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:05:46.127 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:06:42.121 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:06:42.134 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:06:55.335 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:06:55.361 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:07:11.252 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:07:11.269 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:07:27.675 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:07:27.687 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:07:42.704 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:07:42.721 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:08:39.865 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:08:39.883 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:09:36.223 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:09:36.235 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:10:31.851 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:10:31.866 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:10:54.192 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:10:54.206 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:11:15.404 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:11:15.419 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:11:27.405 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:11:27.417 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:11:37.978 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:11:37.994 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:12:29.417 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:12:29.429 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:12:46.402 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:12:46.413 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:13:03.608 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:13:03.623 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:13:17.411 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:13:17.422 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:14:12.514 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:14:12.532 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:15:08.089 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:15:08.103 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:16:07.842 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:16:07.851 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:16:20.112 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:16:20.124 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:16:31.546 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:16:31.557 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:17:13.607 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:17:13.618 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:17:31.976 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:17:31.988 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
+2025-09-06 19:17:54.894 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Using chromedriver 139.0.7258.154 (resolved driver for Chrome 139)
+2025-09-06 19:17:54.920 [main] INFO  i.g.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\hp\.cache\selenium\chromedriver\win64\139.0.7258.154\chromedriver.exe
