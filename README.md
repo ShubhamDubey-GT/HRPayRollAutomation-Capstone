@@ -52,8 +52,8 @@ Test Status - [![HR Payroll Test Automation](https://github.com/ShubhamDubey-GT/
 2.  Clone repo:
 
     ``` bash
-    git clone https://github.com/your-username/hr-payroll-automation.git
-    cd hr-payroll-automation
+    git clone https://github.com/ShubhamDubey-GT/HRPayRollAutomation-Capstone.git
+    cd HRPayRollAutomation-Capstone
     ```
 
 3.  Install dependencies:
