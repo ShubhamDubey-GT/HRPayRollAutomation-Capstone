@@ -50,6 +50,11 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.0.9</version>
+    </dependency>
     <!-- Cucumber -->
     <dependency>
       <groupId>io.cucumber</groupId>
@@ -94,10 +99,10 @@
     </dependency>
 
     <dependency>
-      <groupId>tech.grasshopper</groupId>
-      <artifactId>extentreports-cucumber7-adapter</artifactId>
-      <version>1.14.0</version>
-      <scope>test</scope>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version>
+      <scope>provided</scope>
     </dependency>
 
   </dependencies>

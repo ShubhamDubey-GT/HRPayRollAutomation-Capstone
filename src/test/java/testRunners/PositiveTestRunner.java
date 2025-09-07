@@ -9,6 +9,8 @@ import io.cucumber.testng.CucumberOptions;
     tags = "@Positive",
     plugin = {
             "pretty",
+            "html:target/cucumber-reports/cucumber.html",
+            "json:target/cucumber-reports/cucumber.json",
             "html:reports/cucumber-html",
             "json:reports/cucumber-json/report.json",
             "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
