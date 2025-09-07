@@ -11,6 +11,8 @@ Automation framework for OrangeHRM payroll system using **Java,
 Selenium, TestNG, and Cucumber BDD**. Designed to be easy to run,
 extend, and maintain.
 
+Test Status - [![HR Payroll Test Automation](https://github.com/ShubhamDubey-GT/HRPayRollAutomation-Capstone/actions/workflows/ci.yml/badge.svg)](https://github.com/ShubhamDubey-GT/HRPayRollAutomation-Capstone/actions/workflows/ci.yml)
+
 ## Features
 
 -   Page Object Model for clean code\
@@ -99,7 +101,6 @@ password=admin123
     ```
 ## Test Status
 
-![CI](https://github.com/your-username/hr-payroll-automation/workflows/CI/badge.svg)
 
 ## Reports
 
