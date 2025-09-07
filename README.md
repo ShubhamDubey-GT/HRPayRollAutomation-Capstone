@@ -99,9 +99,7 @@ password=admin123
     ``` bash
     mvn test -Dheadless=true
     ```
-## Test Status
-
-
+    
 ## Reports
 
 -   **Extent Report**: `reports/extent/extent-report.html`\
