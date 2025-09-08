@@ -5,10 +5,6 @@ import org.openqa.selenium.WebDriver;
 import utilities.ElementUtils;
 import utilities.WaitUtils;
 
-/**
- * Enhanced LeavePage with Assign Leave functionality
- * Compatible with your existing ElementUtils methods
- */
 public class LeavePage extends BasePage {
 
     // Existing locators

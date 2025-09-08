@@ -13,6 +13,7 @@ Feature: HR Payroll System Login Functionality - Data Driven
     Examples:
       | UserType | Expected |
       | Admin    | Success  |
+      | ESS      | Success  |
 
   @Negative
   Scenario Outline: Login with invalid credentials
