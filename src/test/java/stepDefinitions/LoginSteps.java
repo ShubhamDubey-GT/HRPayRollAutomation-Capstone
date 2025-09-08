@@ -6,6 +6,8 @@ import pages.DashboardPage;
 import utilities.DriverFactory;
 import utilities.ExcelUtils;
 import org.testng.Assert;
+import utilities.ScreenshotUtils;
+
 import java.util.Map;
 
 public class LoginSteps {
@@ -39,6 +41,35 @@ public class LoginSteps {
     public void i_click_the_login_button() {
         System.out.println("Clicking login button");
         loginPage.clickLoginButton();
+    }
+
+    @Given("I am logged into the application as {string}")
+    public void i_am_logged_into_the_application_as(String userType) {
+        try {
+            LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
+
+            // Use your existing method to get login credentials
+            Map<String, String> loginData = ExcelUtils.getLoginCredentials(userType);
+
+            String username = loginData.get("Username");
+            String password = loginData.get("Password");
+
+            // Perform login
+            loginPage.enterUsername(username);
+            loginPage.enterPassword(password);
+            loginPage.clickLoginButton();
+
+            // Verify login success
+            DashboardPage dashboardPage = new DashboardPage(DriverFactory.getDriver());
+            Assert.assertTrue(dashboardPage.isDashboardDisplayed(),
+                    "Failed to login as " + userType);
+
+            ScreenshotUtils.takeScreenshot("LoginAs" + userType);
+
+        } catch (Exception e) {
+            ScreenshotUtils.takeScreenshot("LoginError");
+            Assert.fail("Failed to login as " + userType + ": " + e.getMessage());
+        }
     }
 
     @Then("login result should be {string}")

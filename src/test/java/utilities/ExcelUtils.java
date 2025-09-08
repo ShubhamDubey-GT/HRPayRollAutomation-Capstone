@@ -115,6 +115,10 @@ public class ExcelUtils {
         }
     }
 
+    public static Map<String, String> getLeaveData(String scenario) {
+        return getRowByValue("testData/TestData.xlsx", "LeaveData", "Scenario", scenario);
+    }
+
     public static void closeWorkbooks() {
         workbookCache.values().forEach(workbook -> {
             try {

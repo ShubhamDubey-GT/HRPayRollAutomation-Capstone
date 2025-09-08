@@ -35,4 +35,13 @@ public class ScreenshotUtils {
     public static String captureScreenshotOnPass(WebDriver driver, String baseName) {
         return captureWithSuffix(driver, baseName, "_PASS");
     }
+
+    public static String takeScreenshot(String testName) {
+        try {
+            return captureWithSuffix(DriverFactory.getDriver(), testName, "_TEST");
+        } catch (Exception e) {
+            System.err.println("Failed to take screenshot: " + e.getMessage());
+            return null;
+        }
+    }
 }

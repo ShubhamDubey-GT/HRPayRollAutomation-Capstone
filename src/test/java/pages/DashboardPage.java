@@ -14,6 +14,7 @@ public class DashboardPage extends BasePage {
     private static final By ADMIN_MENU = By.xpath("//span[text()='Admin']");
     private static final By PIM_MENU = By.xpath("//span[text()='PIM']");
     private static final By LEAVE_MENU = By.xpath("//span[text()='Leave']");
+    private static final By ASSIGN_LEAVE_SUBMENU = By.xpath("//a[text()='Assign Leave']");
 
     public DashboardPage(WebDriver driver) {
         super(driver);
@@ -66,4 +67,37 @@ public class DashboardPage extends BasePage {
     public boolean isLoginSuccessful() {
         return isDashboardDisplayed() && ElementUtils.isDisplayed(driver, USER_DROPDOWN);
     }
+    public LeavePage navigateToAssignLeave() {
+        System.out.println("Navigating to Assign Leave page");
+
+        // First navigate to Leave module (uses your existing method)
+        LeavePage leavePage = navigateToLeave();
+
+        // Then click on Assign Leave
+        leavePage.clickAssignLeave();
+
+        // Wait for assign leave form to load
+        WaitUtils.waitForSeconds(2);
+
+        return leavePage;
+    }
+
+    public boolean isAssignLeaveAccessible() {
+        try {
+            // Navigate to Leave first
+            navigateToLeave();
+            WaitUtils.waitForSeconds(1);
+
+            // Use waitForElement for timeout, then check if displayed
+            if (ElementUtils.waitForElement(driver, ASSIGN_LEAVE_SUBMENU, 3)) {
+                return ElementUtils.isDisplayed(driver, ASSIGN_LEAVE_SUBMENU);
+            }
+            return false;
+
+        } catch (Exception e) {
+            System.out.println("Assign Leave not accessible: " + e.getMessage());
+            return false;
+        }
+    }
+
 }
